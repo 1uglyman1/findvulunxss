@@ -10,7 +10,7 @@ def run_xscan(file):
     try:
         subprocess.run("chmod +x ./xscan", shell=True, check=True)
         print("chmod +x ./xscan 任务执行成功")
-        command = f'./xscan spider  --file {file}  -xss-json /result '
+        command = f'sudo ./xscan spider  --file {file}  -xss-json /result '
         print(command)
         print("开始执行任务")
         subprocess.run(command, shell=True, check=True)
