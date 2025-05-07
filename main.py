@@ -10,7 +10,7 @@ def run_xscan(file):
     try:
         command = f'./xscan spider  --file {file}  -xss-json /result '
         print(command)
-        #subprocess.run(command, shell=True, check=True)
+        subprocess.run(command, shell=True, check=True)
         print("run_xscan 扫描任务执行成功")
     except subprocess.CalledProcessError as e:
         print(f"执行 run_xscan 扫描任务时出错: {e}")
