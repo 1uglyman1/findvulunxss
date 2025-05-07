@@ -14,10 +14,10 @@ spider: # 爬虫设置
   max_depth: 12                     # 最大页面深度限制
   max_page_visit_per_site: 5000     # 每个站点最多访问的页面数量
   crawler_priority: depth-first # 爬虫优先级算法 depth-first 深度优先 breadth-first 广度优先
-  no_scope: False # 指定此参数，爬虫将不受范围限制，但是受最大深度限制
+  no_scope: True # 指定此参数，爬虫将不受范围限制，但是受最大深度限制
   only_root_scope: False  # 只限制根域名范围，如www.baidu.com，将限制爬虫范围为 *.baidu.com
   similarity_url: # 启用Url泛化过滤相同网站
-    use: False  # 是否启用
+    use: True  # 是否启用
     threshold: 10 #url泛化阈值
   similarity_page_dom: # 启用DOM相似度算法过滤相同网站
     use: True # 是否启用
@@ -25,7 +25,7 @@ spider: # 爬虫设置
     similarity: 0.95 # 相似度阈值，大于这个数判定相似
     vector_dim: 5000 # 向量维度
   simile_hash: # 简单hash算法去重
-    use: False
+    use: True
   sources: # 使用哪些源获得更多url
     - robotstxt
     - sitemapxml
@@ -47,7 +47,7 @@ scan: # 扫描器配置
     - post
     - uri
   output: # 支持生成json和markdown格式，为空则不生成
-    response: False # 保存返回包
+    response: True # 保存返回包
     response_header: True # 保存返回header
   hidden_parameters: # 内置用于GET探测的隐藏参数
     - key
