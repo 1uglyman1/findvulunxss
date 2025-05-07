@@ -8,8 +8,11 @@ def run_xscan(file):
     :return:
     """
     try:
+        subprocess.run("chmod +x ./xscan", shell=True, check=True)
+        print("chmod +x ./xscan 任务执行成功")
         command = f'./xscan spider  --file {file}  -xss-json /result '
         print(command)
+        print("开始执行任务")
         subprocess.run(command, shell=True, check=True)
         print("run_xscan 扫描任务执行成功")
     except subprocess.CalledProcessError as e:
