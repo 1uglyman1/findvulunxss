@@ -1,0 +1,47 @@
+name: OneForAll Scan and Upload Results
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  scan-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run OneForAll
+        run: |
+          python main.py
+
+      - name: Compress findvulunxss directory
+        run: |
+          ls -alh
+          cd ..
+          tar -czvf findvulunxss.tar.gz findvulunxss
+          ls -alh
+          mv findvulunxss.tar.gz findvulunxss
+          cd findvulunxss
+          ls -alh
+
+      - name: Upload compressed results
+        uses: actions/upload-artifact@v4
+        with:
+          name: findvulunxss-results
+          path: findvulunxss.tar.gz
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
+    
