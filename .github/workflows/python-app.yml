@@ -20,12 +20,13 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Run OneForAll
+      - name: Run findvulunxss
         run: |
           python main.py
 
       - name: Compress findvulunxss directory
         run: |
+          rm -rf xscan
           ls -alh
           cd ..
           tar -czvf findvulunxss.tar.gz findvulunxss
